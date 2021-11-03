@@ -11,16 +11,16 @@ const Topbar = () => {
           <MdLocalOffer className="text-warning" />&nbsp;
           <h6 className="text-light">Free Delivery Order above Rs. 1000/-</h6>
           <Nav className="ms-auto">
-            <LinkContainer to="/" activeClassName>
+            <LinkContainer to="/" exact >
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/about" activeClassName>
+            <LinkContainer to="/about">
               <Nav.Link>About Us</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/contact" activeClassName>
+            <LinkContainer to="/contact">
               <Nav.Link>Contact Us</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/policy" activeClassName>
+            <LinkContainer to="/policy">
               <Nav.Link>Terms and Condition </Nav.Link>
             </LinkContainer>
           </Nav>

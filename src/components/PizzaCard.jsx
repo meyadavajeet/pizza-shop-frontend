@@ -14,8 +14,8 @@ const PizzaCard = ({ pizza }) => {
 
   return (
     <>
-      <div style = {{padding:'5px'}}>
-        <Card style={{ width: '18rem', marginTop: '5px', }} >
+      <div style={{ padding: '7px' }}>
+        <Card style={{ width: '22rem', marginTop: '5px', }} >
           <Card.Img variant="top"
             src={pizza.image}
             style={{ height: '180px', width: '100%', cursor: 'pointer' }}
@@ -31,7 +31,7 @@ const PizzaCard = ({ pizza }) => {
                   <select onChange={e => { setVarient(e.target.value) }}>
                     {
                       pizza.varients.map((variant) => (
-                        <option value={variant}  > {variant}</option>
+                        <option value={variant} key={variant} > {variant}</option>
                       ))
                     }
                   </select>
@@ -40,7 +40,7 @@ const PizzaCard = ({ pizza }) => {
                   <h6>Quantity</h6>
                   <select onChange={e => { setQuantity(e.target.value) }}>
                     {[...Array(10).keys()].map((v, quantity) => (
-                      <option value={quantity + 1}>{quantity + 1}</option>
+                      <option value={quantity + 1} key={quantity}>{quantity + 1}</option>
                     ))}
                   </select>
                 </Col>

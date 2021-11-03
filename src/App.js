@@ -15,10 +15,10 @@ function App() {
         <TopBar />
         <NavBar />
         <Switch>
-          <Route path="/" component={HomeScreen} />
-          <Route  path="/about" component={About} exact />
-          <Route  path="/contact" component={Contact} exact />
-          <Route  path="/policy" component={Policies} exact />
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/about" component={About} exact />
+          <Route path="/contact" component={Contact} exact />
+          <Route path="/policy" component={Policies} exact />
         </Switch>
       </BrowserRouter>
     </>
