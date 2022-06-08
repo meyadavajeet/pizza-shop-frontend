@@ -6,43 +6,50 @@ import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import PizzaCard from '../components/PizzaCard';
 import { getAllPizzas } from '../actions/PizzaAction';
+import Loader from "react-js-loader";
 
 const HomeScreen = () => {
 
-  const dispatch = useDispatch();
+	// useDispatch -> used to send request from frontend to the server
+	// useSelector -> used to get request response from the redux state
+	// useEffect -> get products at runtime like componentDidMount in class component
 
-  const pizzaState = useSelector((state) => state.getAllPizzaReducer);
+	const dispatch = useDispatch();
 
-  const { loading, pizzas, error } = pizzaState;
+	const pizzaState = useSelector((state) => state.getAllPizzaReducer);
+	//destructing the state object
+	const { loading, pizzas, error } = pizzaState;
 
-  useEffect(() => {
-    dispatch(getAllPizzas());
-  }, [dispatch])
+	useEffect(() => { dispatch(getAllPizzas()) }, [dispatch])
 
-  return (
-    <>
-      <Container>
-        {
-          (loading)
-            ? (<h1>Loading ... </h1>)
-            : error
-              ? (<h1>Something went wrong while fetching...</h1>)
-              : (
-                <Row>
-                  {
-                    pizzas.map((pizzaKey) => (
-                      <Col md={4}>
-                        <PizzaCard pizza={pizzaKey} key={pizzaKey} />
-                      </Col>
-                    ))
-                  }
-                </Row>
-              )
-        }
+	return (
+		<>
+			<Container>
+				{
+					(loading)
+						? (
+							<div className="{Item}" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+								<Loader type="box-rectangular" bgColor={"yellow"} size={100} />
+							</div>
+						)
+						: error
+							? (<h1>Something went wrong while fetching...</h1>)
+							: (
+								<Row>
+									{
+										pizzas.map((pizzaKey) => (
+											<Col md={4}>
+												<PizzaCard pizza={pizzaKey} key={pizzaKey} />
+											</Col>
+										))
+									}
+								</Row>
+							)
+				}
 
-      </Container>
-    </>
-  )
+			</Container>
+		</>
+	)
 }
 
 export default HomeScreen
